@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="820" height="460" viewBox="0 0 820 460">
+<rect width="100%" height="100%" fill="white"/>
+<text x="410" y="28" text-anchor="middle" font-family="Arial" font-size="17" font-weight="600">Radial moisture profiles</text>
+<line x1="82" y1="378" x2="796" y2="378" stroke="#444"/>
+<line x1="82" y1="54" x2="82" y2="378" stroke="#444"/>
+<text x="439" y="436" text-anchor="middle" font-family="Arial" font-size="13">Radius from center (cm)</text>
+<text x="18" y="216" transform="rotate(-90 18 216)" text-anchor="middle" font-family="Arial" font-size="13">Moisture content (kg/kg)</text>
+<line x1="82.00" y1="378" x2="82.00" y2="383" stroke="#444"/>
+<text x="82.00" y="401" text-anchor="middle" font-family="Arial" font-size="11">0</text>
+<line x1="439.00" y1="378" x2="439.00" y2="383" stroke="#444"/>
+<text x="439.00" y="401" text-anchor="middle" font-family="Arial" font-size="11">1</text>
+<line x1="796.00" y1="378" x2="796.00" y2="383" stroke="#444"/>
+<text x="796.00" y="401" text-anchor="middle" font-family="Arial" font-size="11">2</text>
+<path d="M 82.00,71.36 L 117.70,71.36 L 153.40,71.36 L 189.10,71.36 L 224.80,71.36 L 260.50,71.36 L 296.20,71.36 L 331.90,71.36 L 367.60,71.36 L 403.30,71.36 L 439.00,71.36 L 474.70,71.36 L 510.40,71.36 L 546.10,71.36 L 581.80,71.36 L 617.50,71.36 L 653.20,71.36 L 688.90,71.44 L 724.60,73.22 L 760.30,89.18 L 796.00,155.60" fill="none" stroke="#1f77b4" stroke-width="2"/>
+<line x1="102" y1="34" x2="126" y2="34" stroke="#1f77b4" stroke-width="2"/>
+<text x="132" y="38" font-family="Arial" font-size="11">100 s</text>
+<path d="M 82.00,71.36 L 117.70,71.36 L 153.40,71.36 L 189.10,71.36 L 224.80,71.36 L 260.50,71.36 L 296.20,71.36 L 331.90,71.36 L 367.60,71.36 L 403.30,71.36 L 439.00,71.36 L 474.70,71.38 L 510.40,71.44 L 546.10,71.72 L 581.80,72.67 L 617.50,75.46 L 653.20,82.55 L 688.90,98.18 L 724.60,128.29 L 760.30,179.66 L 796.00,258.60" fill="none" stroke="#d62728" stroke-width="2"/>
+<line x1="282" y1="34" x2="306" y2="34" stroke="#d62728" stroke-width="2"/>
+<text x="312" y="38" font-family="Arial" font-size="11">600 s</text>
+<path d="M 82.00,71.36 L 117.70,71.36 L 153.40,71.36 L 189.10,71.37 L 224.80,71.39 L 260.50,71.43 L 296.20,71.53 L 331.90,71.74 L 367.60,72.18 L 403.30,73.03 L 439.00,74.61 L 474.70,77.44 L 510.40,82.23 L 546.10,90.01 L 581.80,102.05 L 617.50,119.92 L 653.20,145.33 L 688.90,180.11 L 724.60,226.14 L 760.30,285.40 L 796.00,360.64" fill="none" stroke="#2ca02c" stroke-width="2"/>
+<line x1="462" y1="34" x2="486" y2="34" stroke="#2ca02c" stroke-width="2"/>
+<text x="492" y="38" font-family="Arial" font-size="11">1800 s</text>
+</svg>

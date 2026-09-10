@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="820" height="460" viewBox="0 0 820 460">
+<rect width="100%" height="100%" fill="white"/>
+<text x="410" y="28" text-anchor="middle" font-family="Arial" font-size="17" font-weight="600">Radial temperature profiles</text>
+<line x1="82" y1="378" x2="796" y2="378" stroke="#444"/>
+<line x1="82" y1="54" x2="82" y2="378" stroke="#444"/>
+<text x="439" y="436" text-anchor="middle" font-family="Arial" font-size="13">Radius from center (cm)</text>
+<text x="18" y="216" transform="rotate(-90 18 216)" text-anchor="middle" font-family="Arial" font-size="13">Temperature (deg C)</text>
+<line x1="82.00" y1="378" x2="82.00" y2="383" stroke="#444"/>
+<text x="82.00" y="401" text-anchor="middle" font-family="Arial" font-size="11">0</text>
+<line x1="439.00" y1="378" x2="439.00" y2="383" stroke="#444"/>
+<text x="439.00" y="401" text-anchor="middle" font-family="Arial" font-size="11">1</text>
+<line x1="796.00" y1="378" x2="796.00" y2="383" stroke="#444"/>
+<text x="796.00" y="401" text-anchor="middle" font-family="Arial" font-size="11">2</text>
+<path d="M 82.00,360.64 L 117.70,360.64 L 153.40,360.64 L 189.10,360.64 L 224.80,360.64 L 260.50,360.63 L 296.20,360.63 L 331.90,360.61 L 367.60,360.59 L 403.30,360.56 L 439.00,360.51 L 474.70,360.43 L 510.40,360.32 L 546.10,360.15 L 581.80,359.91 L 617.50,359.57 L 653.20,359.08 L 688.90,358.42 L 724.60,357.51 L 760.30,356.30 L 796.00,354.71" fill="none" stroke="#1f77b4" stroke-width="2"/>
+<line x1="102" y1="34" x2="126" y2="34" stroke="#1f77b4" stroke-width="2"/>
+<text x="132" y="38" font-family="Arial" font-size="11">100 s</text>
+<path d="M 82.00,345.71 L 117.70,345.60 L 153.40,345.28 L 189.10,344.74 L 224.80,343.98 L 260.50,342.99 L 296.20,341.76 L 331.90,340.27 L 367.60,338.52 L 403.30,336.49 L 439.00,334.17 L 474.70,331.52 L 510.40,328.54 L 546.10,325.19 L 581.80,321.46 L 617.50,317.31 L 653.20,312.72 L 688.90,307.66 L 724.60,302.09 L 760.30,296.00 L 796.00,289.35" fill="none" stroke="#d62728" stroke-width="2"/>
+<line x1="282" y1="34" x2="306" y2="34" stroke="#d62728" stroke-width="2"/>
+<text x="312" y="38" font-family="Arial" font-size="11">600 s</text>
+<path d="M 82.00,177.06 L 117.70,176.80 L 153.40,176.02 L 189.10,174.73 L 224.80,172.92 L 260.50,170.58 L 296.20,167.73 L 331.90,164.36 L 367.60,160.46 L 403.30,156.04 L 439.00,151.09 L 474.70,145.60 L 510.40,139.58 L 546.10,133.01 L 581.80,125.90 L 617.50,118.23 L 653.20,109.99 L 688.90,101.19 L 724.60,91.82 L 760.30,81.88 L 796.00,71.36" fill="none" stroke="#2ca02c" stroke-width="2"/>
+<line x1="462" y1="34" x2="486" y2="34" stroke="#2ca02c" stroke-width="2"/>
+<text x="492" y="38" font-family="Arial" font-size="11">1800 s</text>
+</svg>

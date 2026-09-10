@@ -1,0 +1,11 @@
+{
+  "figures": [
+    "temperature_time_series.svg",
+    "moisture_time_series.svg",
+    "radial_temperature_profiles.svg",
+    "radial_moisture_profiles.svg",
+    "convergence_checks.svg"
+  ],
+  "balance_error": -3.5537510502153986e-12,
+  "max_picard_residual": 1.999806559747152e-09
+}

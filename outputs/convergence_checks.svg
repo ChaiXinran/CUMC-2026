@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="820" height="460" viewBox="0 0 820 460">
+<rect width="100%" height="100%" fill="white"/>
+<text x="410" y="28" text-anchor="middle" font-family="Arial" font-size="17" font-weight="600">Independent refinement checks</text>
+<line x1="82" y1="354" x2="796" y2="354" stroke="#444"/>
+<line x1="82" y1="54" x2="82" y2="354" stroke="#444"/>
+<rect x="140.25" y="347.93" width="26" height="6.07" fill="#1f77b4"/>
+<rect x="176.25" y="132.89" width="26" height="221.11" fill="#d62728"/>
+<text x="171.25" y="378" text-anchor="middle" font-family="Arial" font-size="11">space N80</text>
+<rect x="318.75" y="417.83" width="26" height="-63.83" fill="#1f77b4"/>
+<rect x="354.75" y="177.63" width="26" height="176.37" fill="#d62728"/>
+<text x="349.75" y="378" text-anchor="middle" font-family="Arial" font-size="11">space N160</text>
+<rect x="497.25" y="316.18" width="26" height="37.82" fill="#1f77b4"/>
+<rect x="533.25" y="274.64" width="26" height="79.36" fill="#d62728"/>
+<text x="528.25" y="378" text-anchor="middle" font-family="Arial" font-size="11">time dt0.25</text>
+<rect x="675.75" y="268.48" width="26" height="85.52" fill="#1f77b4"/>
+<rect x="711.75" y="228.78" width="26" height="125.22" fill="#d62728"/>
+<text x="706.75" y="378" text-anchor="middle" font-family="Arial" font-size="11">time dt0.5</text>
+<line x1="77" y1="354.00" x2="82" y2="354.00" stroke="#444"/>
+<text x="72" y="358.00" text-anchor="end" font-family="Arial" font-size="11">1e-4</text>
+<line x1="77" y1="254.00" x2="82" y2="254.00" stroke="#444"/>
+<text x="72" y="258.00" text-anchor="end" font-family="Arial" font-size="11">1e-3</text>
+<line x1="77" y1="154.00" x2="82" y2="154.00" stroke="#444"/>
+<text x="72" y="158.00" text-anchor="end" font-family="Arial" font-size="11">1e-2</text>
+<line x1="77" y1="54.00" x2="82" y2="54.00" stroke="#444"/>
+<text x="72" y="58.00" text-anchor="end" font-family="Arial" font-size="11">1e-1</text>
+<text x="439" y="411" text-anchor="middle" font-family="Arial" font-size="13">Comparison</text>
+<text x="18" y="204" transform="rotate(-90 18 204)" text-anchor="middle" font-family="Arial" font-size="13">Maximum absolute difference</text>
+<rect x="570" y="35" width="14" height="14" fill="#1f77b4"/><text x="590" y="47" font-family="Arial" font-size="11">Temperature</text>
+<rect x="680" y="35" width="14" height="14" fill="#d62728"/><text x="700" y="47" font-family="Arial" font-size="11">Moisture</text>
+</svg>
