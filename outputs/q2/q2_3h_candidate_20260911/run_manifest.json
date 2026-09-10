@@ -1,0 +1,20 @@
+{
+  "runId": "q2_3h_candidate_20260911",
+  "createdAt": "2026-09-10T16:33:47.398Z",
+  "options": {
+    "mode": "3h",
+    "extension": "lastValue",
+    "diffusionCase": "M11",
+    "runId": "q2_3h_candidate_20260911",
+    "outputRoot": "code_q2/runs",
+    "n": 320,
+    "dt": 0.125,
+    "tEnd": 10800
+  },
+  "outputs": [
+    "result2_internal.json",
+    "tables_3_4.md",
+    "validation_q2.md",
+    "result2.xlsx"
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "runId": "q2_short_initial_20260911",
+  "createdAt": "2026-09-10T16:30:13.107Z",
+  "options": {
+    "mode": "short",
+    "extension": "lastValue",
+    "diffusionCase": "M11",
+    "runId": "q2_short_initial_20260911",
+    "outputRoot": "code_q2/runs",
+    "n": 80,
+    "dt": 0.25,
+    "tEnd": 100
+  },
+  "outputs": [
+    "result2_internal.json",
+    "tables_3_4.md",
+    "validation_q2.md",
+    "result2_debug.xlsx"
+  ]
+}

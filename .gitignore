@@ -1,0 +1,4 @@
+# Q2 local runtime link and staging runs are not project source files.
+/code_q2/node_modules/
+/code_q2/runs/
+/outputs/q2/**/~$*.xlsx

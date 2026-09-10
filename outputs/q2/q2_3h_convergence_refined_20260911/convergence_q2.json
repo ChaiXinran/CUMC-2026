@@ -1,0 +1,271 @@
+{
+  "run": {
+    "createdAt": "2026-09-10T16:51:57.724Z",
+    "elapsedMs": 308538,
+    "projectRoot": "E:\\数模2026\\CUMC-2026",
+    "root": "E:\\数模2026\\CUMC-2026\\code_q2\\runs",
+    "baselinePath": "E:\\数模2026\\CUMC-2026\\code_q2\\runs\\q2_3h_candidate_20260911\\result2_internal.json",
+    "n": 320,
+    "dt": 0.125
+  },
+  "threeHour": [
+    {
+      "label": "N=160, dt=0.125 对 N=320, dt=0.125",
+      "temperature": {
+        "valueLabel": "℃",
+        "maxFieldDifference": {
+          "value": 0.00001288186454218021,
+          "time_s": 5400,
+          "radius_cm": 2
+        },
+        "maxMeanDifference": 0.000027193360345734163
+      },
+      "moisture": {
+        "valueLabel": "kg/kg",
+        "maxFieldDifference": {
+          "value": 0.000018940184487892253,
+          "time_s": 1800,
+          "radius_cm": 1.7000000000000002
+        },
+        "maxMeanDifference": 0.000011221989132614851
+      }
+    },
+    {
+      "label": "N=320, dt=0.25 对 N=320, dt=0.125",
+      "temperature": {
+        "valueLabel": "℃",
+        "maxFieldDifference": {
+          "value": 0.00018607676110349303,
+          "time_s": 1800,
+          "radius_cm": 0
+        },
+        "maxMeanDifference": 0.0001533619109324036
+      },
+      "moisture": {
+        "valueLabel": "kg/kg",
+        "maxFieldDifference": {
+          "value": 0.000011348299741031909,
+          "time_s": 1800,
+          "radius_cm": 2
+        },
+        "maxMeanDifference": 0.000002032737411283847
+      }
+    },
+    {
+      "label": "N=640, dt=0.125 对 N=320, dt=0.125",
+      "temperature": {
+        "valueLabel": "℃",
+        "maxFieldDifference": {
+          "value": 0.000003220441897155979,
+          "time_s": 5400,
+          "radius_cm": 2
+        },
+        "maxMeanDifference": 0.00000679843441275807
+      },
+      "moisture": {
+        "valueLabel": "kg/kg",
+        "maxFieldDifference": {
+          "value": 0.000004734009006135409,
+          "time_s": 1800,
+          "radius_cm": 1.7000000000000002
+        },
+        "maxMeanDifference": 0.0000028053370288994017
+      }
+    },
+    {
+      "label": "N=320, dt=0.0625 对 N=320, dt=0.125",
+      "temperature": {
+        "valueLabel": "℃",
+        "maxFieldDifference": {
+          "value": 0.0000925217861080796,
+          "time_s": 1800,
+          "radius_cm": 0
+        },
+        "maxMeanDifference": 0.00007622288687514356
+      },
+      "moisture": {
+        "valueLabel": "kg/kg",
+        "maxFieldDifference": {
+          "value": 0.000005673051593158007,
+          "time_s": 1800,
+          "radius_cm": 2
+        },
+        "maxMeanDifference": 6.181589502496365e-7
+      }
+    }
+  ],
+  "iterationTolerance": {
+    "maxTemperatureDifference": 1.27121779769368e-9,
+    "maxMoistureDifference": 2.463921067175079e-9
+  },
+  "balances": {
+    "baseline": {
+      "initialMoistureIntegral": 0.0005099999999999997,
+      "cumulativeBoundaryMoistureOutflow": 0.00023349467346023343,
+      "initialThermalStorage": 18674.290848450706,
+      "cumulativeBoundaryHeatOutflow": -13330.706341089375,
+      "cumulativeThermalStorageChange": 13330.69986145241,
+      "maxPicardIterations": 13,
+      "maxPicardTemperatureUpdate": 1.4272956150307436e-9,
+      "maxPicardMoistureUpdate": 9.999778782798785e-11,
+      "maxPicardTemperatureResidual": 3.899466870633947e-10,
+      "maxPicardMoistureResidual": 2.5567402753475487e-11,
+      "acceptedSteps": 86400,
+      "rejectedSteps": 0,
+      "minTemperature": 27.999999999999957,
+      "maxTemperature": 49.966409380468995,
+      "minMoisture": 1.0081235219649396,
+      "maxMoisture": 2.5500000000000096,
+      "finalMoistureIntegral": 0.0002765054360735009,
+      "integralMoistureLoss": 0.0002334945639264988,
+      "moistureBalanceError": -1.095337346214767e-10,
+      "thermalStorageBalanceError": -0.006479636966105318,
+      "finalTime": 10800,
+      "thresholdEvent": null
+    },
+    "spatial": {
+      "initialMoistureIntegral": 0.0005099999999999998,
+      "cumulativeBoundaryMoistureOutflow": 0.00023349607792253602,
+      "initialThermalStorage": 18674.290848450695,
+      "cumulativeBoundaryHeatOutflow": -13330.674895422882,
+      "cumulativeThermalStorageChange": 13330.668416008612,
+      "maxPicardIterations": 12,
+      "maxPicardTemperatureUpdate": 1.426826656825142e-9,
+      "maxPicardMoistureUpdate": 9.9997343738778e-11,
+      "maxPicardTemperatureResidual": 3.723583578394639e-10,
+      "maxPicardMoistureResidual": 2.52178774984766e-11,
+      "acceptedSteps": 86400,
+      "rejectedSteps": 0,
+      "minTemperature": 27.99999999999994,
+      "maxTemperature": 49.96640892926953,
+      "minMoisture": 1.0081192278996804,
+      "maxMoisture": 2.5500000000000145,
+      "finalMoistureIntegral": 0.0002765040316088767,
+      "integralMoistureLoss": 0.0002334959683911231,
+      "moistureBalanceError": -1.0953141291094454e-10,
+      "thermalStorageBalanceError": -0.00647941427087062,
+      "finalTime": 10800,
+      "thresholdEvent": null
+    },
+    "temporal": {
+      "initialMoistureIntegral": 0.0005099999999999997,
+      "cumulativeBoundaryMoistureOutflow": 0.0002334942509938574,
+      "initialThermalStorage": 18674.290848450706,
+      "cumulativeBoundaryHeatOutflow": -13330.683328378263,
+      "cumulativeThermalStorageChange": 13330.67843557736,
+      "maxPicardIterations": 13,
+      "maxPicardTemperatureUpdate": 2.6387851903564297e-9,
+      "maxPicardMoistureUpdate": 9.999512329272875e-11,
+      "maxPicardTemperatureResidual": 7.546584265858355e-10,
+      "maxPicardMoistureResidual": 3.034781961802484e-11,
+      "acceptedSteps": 43200,
+      "rejectedSteps": 0,
+      "minTemperature": 27.99999999999982,
+      "maxTemperature": 49.96640620027996,
+      "minMoisture": 1.0081250164514832,
+      "maxMoisture": 2.5500000000000105,
+      "finalMoistureIntegral": 0.00027650584262098316,
+      "integralMoistureLoss": 0.00023349415737901655,
+      "moistureBalanceError": -9.361484084127215e-11,
+      "thermalStorageBalanceError": -0.004892800903689931,
+      "finalTime": 10800,
+      "thresholdEvent": null
+    },
+    "spatialFine": {
+      "initialMoistureIntegral": 0.00051,
+      "cumulativeBoundaryMoistureOutflow": 0.00023349432235766346,
+      "initialThermalStorage": 18674.290848450706,
+      "cumulativeBoundaryHeatOutflow": -13330.714202800917,
+      "cumulativeThermalStorageChange": 13330.70772316984,
+      "maxPicardIterations": 13,
+      "maxPicardTemperatureUpdate": 1.4273666693043197e-9,
+      "maxPicardMoistureUpdate": 9.999334693588935e-11,
+      "maxPicardTemperatureResidual": 4.249847070817773e-10,
+      "maxPicardMoistureResidual": 3.4174111262620304e-11,
+      "acceptedSteps": 86400,
+      "rejectedSteps": 0,
+      "minTemperature": 27.999999999999815,
+      "maxTemperature": 49.96640949329687,
+      "minMoisture": 1.008124595468699,
+      "maxMoisture": 2.55000000000001,
+      "finalMoistureIntegral": 0.0002765057871749745,
+      "integralMoistureLoss": 0.00023349421282502556,
+      "moistureBalanceError": -1.0953263789676912e-10,
+      "thermalStorageBalanceError": -0.006479631076217629,
+      "finalTime": 10800,
+      "thresholdEvent": null
+    },
+    "temporalFine": {
+      "initialMoistureIntegral": 0.0005099999999999997,
+      "cumulativeBoundaryMoistureOutflow": 0.00023349494680810333,
+      "initialThermalStorage": 18674.290848450706,
+      "cumulativeBoundaryHeatOutflow": -13330.728963608699,
+      "cumulativeThermalStorageChange": 13330.710204358797,
+      "maxPicardIterations": 12,
+      "maxPicardTemperatureUpdate": 2.8261837314857985e-9,
+      "maxPicardMoistureUpdate": 9.999956418482725e-11,
+      "maxPicardTemperatureResidual": 7.065829557785609e-10,
+      "maxPicardMoistureResidual": 2.5353582895422824e-11,
+      "acceptedSteps": 172800,
+      "rejectedSteps": 0,
+      "minTemperature": 27.9999999999999,
+      "maxTemperature": 49.96641017879018,
+      "minMoisture": 1.0081236905987845,
+      "maxMoisture": 2.5500000000000145,
+      "finalMoistureIntegral": 0.0002765054710165348,
+      "integralMoistureLoss": 0.00023349452898346488,
+      "moistureBalanceError": -4.1782463844038456e-10,
+      "thermalStorageBalanceError": -0.018759249902359443,
+      "finalTime": 10800,
+      "thresholdEvent": null
+    },
+    "normalShort": {
+      "initialMoistureIntegral": 0.0005099999999999999,
+      "cumulativeBoundaryMoistureOutflow": 0.0000037459076554251533,
+      "initialThermalStorage": 18674.290848450706,
+      "cumulativeBoundaryHeatOutflow": -20.399815298670312,
+      "cumulativeThermalStorageChange": 20.399814884260017,
+      "maxPicardIterations": 12,
+      "maxPicardTemperatureUpdate": 4.413180931805982e-11,
+      "maxPicardMoistureUpdate": 9.887024532417854e-11,
+      "maxPicardTemperatureResidual": 1.208172493907056e-11,
+      "maxPicardMoistureResidual": 2.5105867368224083e-11,
+      "acceptedSteps": 400,
+      "rejectedSteps": 0,
+      "minTemperature": 27.999999999999986,
+      "maxTemperature": 28.131798081857376,
+      "minMoisture": 2.2684990304161965,
+      "maxMoisture": 2.550000000000008,
+      "finalMoistureIntegral": 0.0005062540924141729,
+      "integralMoistureLoss": 0.0000037459075858270073,
+      "moistureBalanceError": -6.959814601264873e-14,
+      "thermalStorageBalanceError": -4.144102945247141e-7,
+      "finalTime": 100,
+      "thresholdEvent": null
+    },
+    "tightShort": {
+      "initialMoistureIntegral": 0.0005099999999999999,
+      "cumulativeBoundaryMoistureOutflow": 0.0000037459076530335863,
+      "initialThermalStorage": 18674.290848450706,
+      "cumulativeBoundaryHeatOutflow": -20.399815274191813,
+      "cumulativeThermalStorageChange": 20.399815270844908,
+      "maxPicardIterations": 15,
+      "maxPicardTemperatureUpdate": 3.588240815588506e-13,
+      "maxPicardMoistureUpdate": 9.85878045867139e-13,
+      "maxPicardTemperatureResidual": 1.0500533298555411e-13,
+      "maxPicardMoistureResidual": 2.515727682480724e-13,
+      "acceptedSteps": 400,
+      "rejectedSteps": 0,
+      "minTemperature": 27.999999999999975,
+      "maxTemperature": 28.131798083128594,
+      "minMoisture": 2.2684990279522754,
+      "maxMoisture": 2.550000000000005,
+      "finalMoistureIntegral": 0.0005062540923475396,
+      "integralMoistureLoss": 0.000003745907652460338,
+      "moistureBalanceError": -5.732481817791873e-16,
+      "thermalStorageBalanceError": -3.346904975387588e-9,
+      "finalTime": 100,
+      "thresholdEvent": null
+    }
+  }
+}
