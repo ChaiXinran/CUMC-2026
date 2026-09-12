@@ -1,0 +1,46 @@
+{
+  "version": "q4_final_v1",
+  "description": "文献启发参考水分进程与实测端点约束半径重建",
+  "environment": {
+    "windowSeconds": 1800,
+    "extension": "lastWindowMean",
+    "windowMethod": "trapezoidal"
+  },
+  "shrinkage": {
+    "p": 2.075,
+    "tailCount": 5,
+    "R0_m": 0.02,
+    "C0": 2.55,
+    "Ce": "environment.lastWindowMean.moisture"
+  },
+  "reference": {
+    "n": 160,
+    "dt_s": 2,
+    "tEnd_s": 259200,
+    "outputInterval_s": 2,
+    "progressInterval_s": 1800
+  },
+  "main": {
+    "nValues": [160, 320, 640],
+    "dt_s": 2,
+    "tEnd_s": 259200,
+    "outputInterval_s": 60,
+    "mesh": "surfaceRefined",
+    "physics": "q4",
+    "kind": "material"
+  },
+  "timeCheck": {
+    "enabled": true,
+    "n": 640,
+    "dtValues_s": [1, 0.5]
+  },
+  "geometry": {
+    "sDenominatorTolerance": 1e-10,
+    "thetaRoundoffTolerance": 1e-10,
+    "referenceMonotonicTolerance": 1e-10
+  },
+  "outputs": {
+    "writeXlsx": false,
+    "physicalOutputRadii_cm": [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9]
+  }
+}
