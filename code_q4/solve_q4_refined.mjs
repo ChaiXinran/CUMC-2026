@@ -1016,6 +1016,8 @@ function parseArgs(argv) {
     else if (key === 'dt') args.dt = Number(value);
     else if (key === 't-end') args.tEnd = Number(value);
     else if (key === 'output-interval') args.outputInterval = Number(value);
+    else if (key === 'max-iterations') args.maxIterations = Number(value);
+    else if (key === 'initial-dt') args.initialDt = Number(value);
     else if (key === 'mesh') args.mesh = value;
     else if (key === 'residual-tolerance') args.residualTolerance = Number(value);
     else if (key === 'extension') args.extension = value;
@@ -1037,6 +1039,8 @@ function parseArgs(argv) {
   else { args.n = args.n ?? 160; args.dt = args.dt ?? 1; }
   args.tEnd = args.tEnd ?? DEFAULT_MAX_T;
   args.outputInterval = args.outputInterval ?? 60;
+  if (args.maxIterations !== undefined && (!(args.maxIterations > 0) || !Number.isInteger(args.maxIterations))) throw new Error(`Picard最大迭代次数非法: ${args.maxIterations}`);
+  if (args.initialDt !== undefined && (!(args.initialDt > 0) || !Number.isFinite(args.initialDt))) throw new Error(`初始步长非法: ${args.initialDt}`);
   args.mesh = args.mesh ?? 'surfaceRefined';
   if (args.mesh !== 'uniform' && args.mesh !== 'surfaceRefined') throw new Error(`未知网格类型: ${args.mesh}`);
   caseConfig(args.caseName);
