@@ -98,6 +98,7 @@ async function runReference(config, inputs, runDir) {
     progressLabel: `reference-N${config.reference.n}-dt${config.reference.dt_s}`,
     progressIntervalSeconds: config.reference.progressInterval_s,
   };
+  await fs.mkdir(runDir, { recursive: true });
   console.log(`[q4-final] 开始参考进程 N=${options.n}, dt=${options.dt}s, tEnd=${options.tEnd}s；达标后继续推进。`);
   const simulation = simulateCoupledShrink(inputs.environment, law, options);
   const times = simulation.store.times.slice();
@@ -123,7 +124,6 @@ async function runReference(config, inputs, runDir) {
     MR: mr,
     s,
   };
-  await fs.mkdir(runDir, { recursive: true });
   await fs.writeFile(path.join(runDir, 'reference_progress.json'), JSON.stringify(payload, null, 2), 'utf8');
   await fs.writeFile(path.join(runDir, 'reference_progress.csv'), csv([
     ['time_s', 'Cbar', 'MR', 's_MR_power_p'],
@@ -390,8 +390,10 @@ async function runSpace(config, inputs, geometry, runDir, nValues = config.main.
   for (const n of nValues) {
     const caseName = `H_n${n}_dt${String(dt).replace('.', 'p')}`;
     console.log(`[q4-final] 开始 ${caseName}`);
-    const result = simulateQuestion4(inputs.environment, geometry, { n, dt, tEnd: config.main.tEnd_s, outputInterval: config.main.outputInterval_s, kind: config.main.kind, physics: config.main.physics, mesh: config.main.mesh });
-    const summary = await writeCaseArtifacts(path.join(runDir, caseName), config, inputs, geometry, result, caseName, 'reference_progress');
+    const caseDir = path.join(runDir, caseName);
+    await fs.mkdir(caseDir, { recursive: true });
+    const result = simulateQuestion4(inputs.environment, geometry, { n, dt, tEnd: config.main.tEnd_s, outputInterval: config.main.outputInterval_s, kind: config.main.kind, physics: config.main.physics, mesh: config.main.mesh, progressPath: path.join(caseDir, 'progress.jsonl'), progressLabel: caseName, progressIntervalSeconds: 1800 });
+    const summary = await writeCaseArtifacts(caseDir, config, inputs, geometry, result, caseName, 'reference_progress');
     summaries.push(summary);
     console.log(`[q4-final] 完成 ${caseName}: threshold=${summary.thresholdTime_h} h accepted=${summary.acceptedSteps} rejected=${summary.rejectedSteps}`);
   }
@@ -442,8 +444,10 @@ async function main() {
   if (options.mode === 'pchip' || options.mode === 'all') {
     const pchipName = `P_n${selectedN}_dt${String(options.dt ?? config.main.dt_s).replace('.', 'p')}`;
     const pchipDt = options.dt ?? config.main.dt_s;
-    const result = simulateQuestion4(inputs.environment, inputs.pchip, { n: selectedN, dt: pchipDt, tEnd: config.main.tEnd_s, outputInterval: config.main.outputInterval_s, kind: config.main.kind, physics: config.main.physics, mesh: config.main.mesh });
-    pchipSummary = await writeCaseArtifacts(path.join(runDir, 'pchip', pchipName), config, inputs, inputs.pchip, result, pchipName, 'same_environment_direct_PCHIP');
+    const pchipDir = path.join(runDir, 'pchip', pchipName);
+    await fs.mkdir(pchipDir, { recursive: true });
+    const result = simulateQuestion4(inputs.environment, inputs.pchip, { n: selectedN, dt: pchipDt, tEnd: config.main.tEnd_s, outputInterval: config.main.outputInterval_s, kind: config.main.kind, physics: config.main.physics, mesh: config.main.mesh, progressPath: path.join(pchipDir, 'progress.jsonl'), progressLabel: pchipName, progressIntervalSeconds: 1800 });
+    pchipSummary = await writeCaseArtifacts(pchipDir, config, inputs, inputs.pchip, result, pchipName, 'same_environment_direct_PCHIP');
   }
   if (spaceSummaries.length || timeSummaries.length || pchipSummary) {
     const hFinal = spaceSummaries.length ? spaceSummaries[spaceSummaries.length - 1] : null;

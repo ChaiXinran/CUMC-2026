@@ -1,4 +1,5 @@
 import fs from 'node:fs/promises';
+import fsSync from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { FileBlob, SpreadsheetFile, Workbook } from '@oai/artifact-tool';
@@ -609,6 +610,34 @@ function simulateQuestion4(environment, radiusModel, options = {}) {
   let thresholdEvent = null;
   let endpointState = null;
   const stageCrossings = {};
+  const progressRecords = [];
+  const progressIntervalSeconds = options.progressIntervalSeconds ?? 1800;
+  let nextProgressTime = progressIntervalSeconds;
+  const recordProgress = (time, radius, type = 'interval') => {
+    if (!options.progressPath) return;
+    const maximumMoisture = Math.max(...moisture);
+    const meanMoisture = kind === 'material'
+      ? 2 * sumWeighted(grid, moisture)
+      : 2 * sumWeighted(grid, moisture) / (R0 * R0);
+    const record = {
+      type,
+      time_s: time,
+      time_h: time / 3600,
+      acceptedSteps: balance.acceptedSteps,
+      rejectedSteps: balance.rejectedSteps,
+      radius_m: radius,
+      meanMoisture,
+      maximumMoisture,
+      surfaceMoisture: moisture[grid.n],
+      maxPicardIterations: balance.maxPicardIterations,
+      maxTemperatureResidual: balance.maxPicardTemperatureResidual,
+      maxMoistureResidual: balance.maxPicardMoistureResidual,
+    };
+    progressRecords.push(record);
+    const label = options.progressLabel ?? 'question4';
+    console.log(`[q4-progress] ${label} t=${record.time_h.toFixed(3)} h accepted=${record.acceptedSteps} rejected=${record.rejectedSteps} R=${(record.radius_m * 100).toFixed(6)} cm Cbar=${record.meanMoisture.toFixed(6)} maxC=${record.maximumMoisture.toFixed(6)} picard=${record.maxPicardIterations}`);
+    fsSync.appendFileSync(options.progressPath, `${JSON.stringify(record)}\n`, 'utf8');
+  };
   const recordCheckpoint = (time, radius, type = 'scheduled') => {
     stateCheckpoints.push({
       time,
@@ -655,6 +684,7 @@ function simulateQuestion4(environment, radiusModel, options = {}) {
   const initialRadius = radiusModel.radius(0);
   recordDue(0, initialRadius);
   checkpointDue(0, initialRadius);
+  recordProgress(0, initialRadius, 'initial');
   while (t < tEnd - 1e-10) {
     const target = requestedTimes[outputIndex] ?? tEnd;
     const dtStep = Math.min(dt, target - t, tEnd - t);
@@ -692,6 +722,7 @@ function simulateQuestion4(environment, radiusModel, options = {}) {
         endpointState = { time: t, temperature: temperature.slice(), moisture: moisture.slice(), radius: refinedRadius };
         recordDue(t, refinedRadius);
         recordCheckpoint(t, refinedRadius, 'threshold');
+        recordProgress(t, refinedRadius, 'threshold');
         break;
       }
       accept(oldTemperature, oldMoisture, step.temperature, step.moisture, dtStep, values, step, radius);
@@ -707,6 +738,10 @@ function simulateQuestion4(environment, radiusModel, options = {}) {
       }
       recordDue(t, radius);
       checkpointDue(t, radius);
+      if (t >= nextProgressTime - 1e-8) {
+        recordProgress(t, radius, 'interval');
+        while (nextProgressTime <= t + 1e-8) nextProgressTime += progressIntervalSeconds;
+      }
       dt = Math.min(requestedDt, dt * 2);
     } catch (error) {
       if (dt <= requestedDt / 128) throw error;
@@ -715,6 +750,7 @@ function simulateQuestion4(environment, radiusModel, options = {}) {
     }
   }
   const lastState = { time: t, temperature: temperature.slice(), moisture: moisture.slice(), radius: radiusModel.radius(t) };
+  if (options.progressPath && (!progressRecords.length || Math.abs(progressRecords[progressRecords.length - 1].time_s - t) > 1e-8)) recordProgress(t, lastState.radius, thresholdEvent ? 'threshold_final' : 'final');
   if (!thresholdEvent && Math.abs(t - tEnd) < 1e-8) checkpointDue(t, lastState.radius);
   if (!checkpointTimes.some((time) => Math.abs(time - lastState.time) < 1e-8)) recordCheckpoint(lastState.time, lastState.radius, thresholdEvent ? 'threshold' : 'budget');
   balance.finalMoistureIntegral = sumWeighted(grid, moisture);
@@ -739,7 +775,7 @@ function simulateQuestion4(environment, radiusModel, options = {}) {
       endTime_s: store.times[last],
     };
   }
-  return { grid, store, stateCheckpoints, balance, requestedDt, tEnd, outputInterval, kind, physics, finalTemperature: temperature, finalMoisture: moisture, stageCrossings, slopeWindows, endpointState, lastState, radiusModel, finalRadius, thresholdEvent };
+  return { grid, store, stateCheckpoints, progressRecords, balance, requestedDt, tEnd, outputInterval, kind, physics, finalTemperature: temperature, finalMoisture: moisture, stageCrossings, slopeWindows, endpointState, lastState, radiusModel, finalRadius, thresholdEvent };
 }
 
 function runTests() {
