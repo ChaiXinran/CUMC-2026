@@ -1,0 +1,26 @@
+{
+  "p": 2.075,
+  "n": 320,
+  "requestedDt": 1,
+  "thresholdTime_s": 182297.4677734375,
+  "thresholdTime_h": 50.63818549262153,
+  "acceptedSteps": 296836,
+  "rejectedSteps": 172866,
+  "minAcceptedDt": 0.0625,
+  "maxAcceptedDt": 1,
+  "maxOuterIterations": 20,
+  "maxInnerIterations": 100,
+  "maxTemperatureResidual": 9.999990215798852e-9,
+  "maxMoistureResidual": 8.51611278951973e-9,
+  "maxRadiusConsistency": 1.5663893793149697e-12,
+  "moistureBalanceErrorRelative": -0.000002769793382189425,
+  "finalRadius_m": 0.011986119284298345,
+  "law": {
+    "p": 2.075,
+    "Ce": 0.04998749999999999,
+    "rTail": 0.01198,
+    "tailCount": 5,
+    "lambda": 0.358801,
+    "lambdaMethod": "last_5_observed_points_arithmetic_mean"
+  }
+}

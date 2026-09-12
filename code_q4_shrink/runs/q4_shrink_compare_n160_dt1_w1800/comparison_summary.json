@@ -1,0 +1,205 @@
+{
+  "common": {
+    "environmentWindowSeconds": 1800,
+    "environmentWindowMethod": "trapezoidal",
+    "Ce": 0.04998749999999999,
+    "n": 160,
+    "requestedDt": 1,
+    "mesh": "surfaceRefined",
+    "threshold": 0.15
+  },
+  "A_PCHIP": {
+    "finalTime_s": 183876.9462890625,
+    "finalTime_h": 51.07692952473958,
+    "thresholdEvent": {
+      "bracket": [
+        183876.9453125,
+        183876.9462890625
+      ],
+      "confirmedTime": 183876.9462890625,
+      "confirmedMaximum": 0.14999999956701113,
+      "confirmedIndex": 0,
+      "criterion": "max over all internal x nodes < 0.15 kg/kg"
+    },
+    "stageCrossings_s": {
+      "0.6": 49632.65699557648,
+      "0.3": 82625.52652242519,
+      "0.2": 123983.13915767176,
+      "0.15": 183876.9462890625
+    },
+    "balance": {
+      "initialMoistureIntegral": 1.2750000000000008,
+      "cumulativeBoundaryMoistureOutflow": 1.215797280433742,
+      "cumulativeBoundaryHeatOutflow": -35113461.59465079,
+      "initialThermalStorage": 47022154.929577485,
+      "cumulativeThermalStorageChange": 35113460.13727669,
+      "maxPicardIterations": 15,
+      "maxPicardTemperatureResidual": 9.999506969313773e-9,
+      "maxPicardMoistureResidual": 2.1083891259218574e-9,
+      "acceptedSteps": 183877,
+      "rejectedSteps": 0,
+      "minAcceptedDt": 0.9462890625,
+      "maxAcceptedDt": 1,
+      "minTemperature": 27.999999999999975,
+      "maxTemperature": 50.050102955634785,
+      "minMoisture": 0.052608265655825256,
+      "maxMoisture": 2.5500000000000074,
+      "finalMoistureIntegral": 0.05920336282979357,
+      "integralMoistureLoss": 1.2157966371702071,
+      "moistureBalanceError": -6.432635348829763e-7,
+      "moistureBalanceErrorRelative": -5.045204195160595e-7,
+      "thermalStorageBalanceError": -1.4573741033673286,
+      "thermalStorageBalanceErrorRelative": -3.099334995492993e-8,
+      "finalTime": 183876.9462890625,
+      "finalRadius": 0.012,
+      "thresholdEvent": {
+        "bracket": [
+          183876.9453125,
+          183876.9462890625
+        ],
+        "confirmedTime": 183876.9462890625,
+        "confirmedMaximum": 0.14999999956701113,
+        "confirmedIndex": 0,
+        "criterion": "max over all internal x nodes < 0.15 kg/kg"
+      }
+    },
+    "radiusMethod": "observed_PCHIP"
+  },
+  "B_p1": {
+    "finalTime_s": 205448.9921875,
+    "finalTime_h": 57.069164496527776,
+    "thresholdEvent": {
+      "bracket": [
+        205448.9912109375,
+        205448.9921875
+      ],
+      "confirmedTime": 205448.9921875,
+      "confirmedMaximum": 0.14999999958262214,
+      "confirmedIndex": 0,
+      "criterion": "max over all internal x nodes < 0.15 kg/kg"
+    },
+    "stageCrossings_s": {
+      "0.6": 60194.13028028019,
+      "0.3": 97442.5743719617,
+      "0.2": 142242.00358860637,
+      "0.15": 205448.9921875
+    },
+    "balance": {
+      "initialMoistureIntegral": 1.2750000000000008,
+      "cumulativeBoundaryMoistureOutflow": 1.215801142187339,
+      "cumulativeBoundaryHeatOutflow": -35149709.30991532,
+      "initialThermalStorage": 47022154.929577485,
+      "cumulativeThermalStorageChange": 35149701.25004356,
+      "maxOuterIterations": 20,
+      "maxInnerIterations": 15,
+      "maxTemperatureResidual": 9.99964191268901e-9,
+      "maxMoistureResidual": 1.8467351280068798e-9,
+      "maxRadiusConsistency": 9.697399133701268e-13,
+      "maxMR": 0.9999209722157597,
+      "minMR": 0.027366237958256115,
+      "acceptedSteps": 205450,
+      "rejectedSteps": 1,
+      "minAcceptedDt": 0.5,
+      "maxAcceptedDt": 1,
+      "minTemperature": 27.99999999999999,
+      "maxTemperature": 50.03709023927324,
+      "minMoisture": 0.052550547381325946,
+      "maxMoisture": 2.550000000000007,
+      "finalMoistureIntegral": 0.05920171848680738,
+      "integralMoistureLoss": 1.2157982815131934,
+      "moistureBalanceError": -0.000002860674145566122,
+      "moistureBalanceErrorRelative": -0.0000022436659965224475,
+      "thermalStorageBalanceError": -8.059871755540371,
+      "thermalStorageBalanceErrorRelative": -1.7140583556009292e-7,
+      "finalTime": 205448.9921875,
+      "finalRadius": 0.012269445047150192,
+      "thresholdEvent": {
+        "bracket": [
+          205448.9912109375,
+          205448.9921875
+        ],
+        "confirmedTime": 205448.9921875,
+        "confirmedMaximum": 0.14999999958262214,
+        "confirmedIndex": 0,
+        "criterion": "max over all internal x nodes < 0.15 kg/kg"
+      }
+    },
+    "law": {
+      "p": 1,
+      "Ce": 0.04998749999999999,
+      "rTail": 0.01198,
+      "tailCount": 5,
+      "lambda": 0.358801,
+      "lambdaMethod": "last_5_observed_points_arithmetic_mean"
+    }
+  },
+  "C_pCal": {
+    "p": 2.075,
+    "finalTime_s": 182308.515625,
+    "finalTime_h": 50.641254340277776,
+    "thresholdEvent": {
+      "bracket": [
+        182308.5146484375,
+        182308.515625
+      ],
+      "confirmedTime": 182308.515625,
+      "confirmedMaximum": 0.14999999954804896,
+      "confirmedIndex": 0,
+      "criterion": "max over all internal x nodes < 0.15 kg/kg"
+    },
+    "stageCrossings_s": {
+      "0.6": 48759.70350819284,
+      "0.3": 81287.65517364808,
+      "0.2": 122521.91564434681,
+      "0.15": 182308.515625
+    },
+    "balance": {
+      "initialMoistureIntegral": 1.2750000000000008,
+      "cumulativeBoundaryMoistureOutflow": 1.215799128589987,
+      "cumulativeBoundaryHeatOutflow": -35121668.909663774,
+      "initialThermalStorage": 47022154.929577485,
+      "cumulativeThermalStorageChange": 35121661.39768796,
+      "maxOuterIterations": 20,
+      "maxInnerIterations": 16,
+      "maxTemperatureResidual": 9.997790956740385e-9,
+      "maxMoistureResidual": 2.1045210451089795e-9,
+      "maxRadiusConsistency": 1.3921884478573787e-12,
+      "maxMR": 0.9999209700635381,
+      "minMR": 0.027367612291874604,
+      "acceptedSteps": 182309,
+      "rejectedSteps": 0,
+      "minAcceptedDt": 0.515625,
+      "maxAcceptedDt": 1,
+      "minTemperature": 27.99999999999999,
+      "maxTemperature": 50.048854105398654,
+      "minMoisture": 0.052611299140112304,
+      "maxMoisture": 2.5500000000000065,
+      "finalMoistureIntegral": 0.059203436412420075,
+      "integralMoistureLoss": 1.2157965635875807,
+      "moistureBalanceError": -0.000002565002406251793,
+      "moistureBalanceErrorRelative": -0.00000201176659313866,
+      "thermalStorageBalanceError": -7.511975817382336,
+      "thermalStorageBalanceErrorRelative": -1.59753967648497e-7,
+      "finalTime": 182308.515625,
+      "finalRadius": 0.011986119581053055,
+      "thresholdEvent": {
+        "bracket": [
+          182308.5146484375,
+          182308.515625
+        ],
+        "confirmedTime": 182308.515625,
+        "confirmedMaximum": 0.14999999954804896,
+        "confirmedIndex": 0,
+        "criterion": "max over all internal x nodes < 0.15 kg/kg"
+      }
+    },
+    "law": {
+      "p": 2.075,
+      "Ce": 0.04998749999999999,
+      "rTail": 0.01198,
+      "tailCount": 5,
+      "lambda": 0.358801,
+      "lambdaMethod": "last_5_observed_points_arithmetic_mean"
+    }
+  }
+}

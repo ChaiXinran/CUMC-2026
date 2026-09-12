@@ -1,0 +1,31 @@
+{
+  "runId": "q4_refined_t11_n160_dt1_w1800_pchip",
+  "createdAt": "2026-09-11T10:51:45.667Z",
+  "options": {
+    "mode": "full",
+    "extension": "lastWindowMean",
+    "environmentWindow": 1800,
+    "radiusMethod": "pchip",
+    "caseName": "t11",
+    "fourCases": false,
+    "n": 160,
+    "dt": 1,
+    "tEnd": 250000,
+    "outputInterval": 60,
+    "runId": "q4_refined_t11_n160_dt1_w1800_pchip",
+    "outputRoot": "code_q4\\runs",
+    "mesh": "surfaceRefined"
+  },
+  "outputs": [
+    "result4_internal.json",
+    "final_state.json",
+    "state_checkpoints.json",
+    "tables_6.md",
+    "comparison_4cases.json",
+    "comparison_4cases.md",
+    "radius_time.csv",
+    "validation_q4.md",
+    "result4.xlsx",
+    "result4_submission.xlsx"
+  ]
+}

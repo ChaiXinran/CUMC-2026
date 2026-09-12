@@ -1,0 +1,50 @@
+{
+  "runName": "q4_shrink_coupled_v1",
+  "environment": {
+    "extension": "lastWindowMean",
+    "windowSeconds": 1800,
+    "windowMethod": "trapezoidal"
+  },
+  "physics": {
+    "case": "t11",
+    "coordinate": "material",
+    "mesh": "surfaceRefined",
+    "R0_m": 0.02,
+    "C0_kg_per_kg": 2.55,
+    "h_T": 25,
+    "h_m": 8e-7,
+    "threshold_C": 0.15
+  },
+  "shrinkage": {
+    "CeSource": "post_window_constant_environment_moisture",
+    "tailCount": 5,
+    "tailRepresentative": "arithmetic_mean_of_last_measurements",
+    "lambdaSource": "(Rtail/R0)^2",
+    "pBase": 1,
+    "pGrid": [0.25, 0.5, 0.75, 1, 1.25, 1.5, 2, 2.5, 3],
+    "pFineHalfWidth": 0.2,
+    "pFineStep": 0.025
+  },
+  "calibration": {
+    "observationIntervalSeconds": 1800,
+    "validationBlocks": [[12, 19], [40, 47], [80, 87], [120, 127]],
+    "tailExcludedFromValidation": true,
+    "stageBoundariesHours": [4, 24],
+    "calibrationN": 80,
+    "calibrationDtSeconds": 4,
+    "verificationN": 160,
+    "verificationDtSeconds": 1
+  },
+  "numerics": {
+    "outerMaxIterations": 80,
+    "outerRelaxation": 0.65,
+    "radiusUpdateTolerance": 1e-11,
+    "temperatureUpdateTolerance": 1e-8,
+    "moistureUpdateTolerance": 1e-10,
+    "residualTolerance": 1e-8,
+    "innerMaxIterations": 100,
+    "stepReductionLimit": 128,
+    "outputIntervalSeconds": 1800,
+    "checkpointIntervalSeconds": 21600
+  }
+}
