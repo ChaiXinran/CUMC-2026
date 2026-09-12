@@ -1,0 +1,7 @@
+quantity,value,unit
+confirmed_time,206866.7275390625,s
+linear_estimate,206866.72661463288,s
+bracket_left,206866.7265625,s
+bracket_right,206866.7275390625,s
+confirmed_maximum,0.14999999974755224,kg/kg
+confirmed_index,0,node

@@ -1,0 +1,23 @@
+{
+  "runId": "q3_30min_q2_3h_n1280_dt0p5_20260911",
+  "createdAt": "2026-09-11T13:36:17.652Z",
+  "options": {
+    "n": 1280,
+    "dt": 0.5,
+    "startTime": 10800,
+    "tEnd": 259200,
+    "outputInterval": 60,
+    "mesh": "uniform",
+    "extension": "last30MinMean",
+    "initialXlsx": "outputs/q2/final_3h_20260911_clean/result2_3h_final.xlsx",
+    "runId": "q3_30min_q2_3h_n1280_dt0p5_20260911",
+    "initialSource": "E:\\数模2026\\CUMC-2026\\outputs\\q2\\final_3h_20260911_clean\\result2_3h_final.xlsx"
+  },
+  "outputs": [
+    "result3_internal.json",
+    "endpoint_localization.csv",
+    "stage_crossings.csv",
+    "validation_q3_30min.md",
+    "result3.xlsx"
+  ]
+}
