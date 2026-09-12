@@ -1018,6 +1018,8 @@ function parseArgs(argv) {
     else if (key === 'output-interval') args.outputInterval = Number(value);
     else if (key === 'max-iterations') args.maxIterations = Number(value);
     else if (key === 'initial-dt') args.initialDt = Number(value);
+    else if (key === 'progress') args.progress = true;
+    else if (key === 'progress-interval') args.progressIntervalSeconds = Number(value);
     else if (key === 'mesh') args.mesh = value;
     else if (key === 'residual-tolerance') args.residualTolerance = Number(value);
     else if (key === 'extension') args.extension = value;
@@ -1041,6 +1043,7 @@ function parseArgs(argv) {
   args.outputInterval = args.outputInterval ?? 60;
   if (args.maxIterations !== undefined && (!(args.maxIterations > 0) || !Number.isInteger(args.maxIterations))) throw new Error(`Picard最大迭代次数非法: ${args.maxIterations}`);
   if (args.initialDt !== undefined && (!(args.initialDt > 0) || !Number.isFinite(args.initialDt))) throw new Error(`初始步长非法: ${args.initialDt}`);
+  if (args.progressIntervalSeconds !== undefined && (!(args.progressIntervalSeconds > 0) || !Number.isFinite(args.progressIntervalSeconds))) throw new Error(`进度日志间隔非法: ${args.progressIntervalSeconds}`);
   args.mesh = args.mesh ?? 'surfaceRefined';
   if (args.mesh !== 'uniform' && args.mesh !== 'surfaceRefined') throw new Error(`未知网格类型: ${args.mesh}`);
   caseConfig(args.caseName);
@@ -1127,6 +1130,7 @@ async function writeArtifacts(runDir, environment, radiusModel, result, comparis
 async function main() {
   const options = parseArgs(process.argv.slice(2));
   const { runId, runDir, outputRoot } = await createRunDirectory(options);
+  if (options.progress) options.progressPath = path.join(runDir, 'progress.jsonl');
   const started = Date.now();
   const environment = await loadRefinedEnvironment(options.extension, options.environmentWindow);
   const radiusModel = await loadRadiusModel(options.radiusMethod);
