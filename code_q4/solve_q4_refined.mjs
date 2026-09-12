@@ -28,6 +28,12 @@ function maxAbsDiff(a, b) {
   return result;
 }
 
+function dotProduct(a, b) {
+  let total = 0;
+  for (let i = 0; i < a.length; i++) total += a[i] * b[i];
+  return total;
+}
+
 function sumWeighted(grid, state) {
   let total = 0;
   for (let i = 0; i <= grid.n; i++) total += grid.weights[i] * state[i];
@@ -188,8 +194,11 @@ function coupledStepQ4(grid, oldTemperature, oldMoisture, dt, environment, optio
   const moistureUpdateTolerance = options.moistureUpdateTolerance ?? 1e-10;
   const residualTolerance = options.residualTolerance ?? 1e-8;
   const relaxation = options.relaxation ?? 0.8;
+  const acceleratePicard = options.acceleratePicard ?? false;
   let guessTemperature = oldTemperature.slice();
   let guessMoisture = oldMoisture.slice();
+  let previousTemperatureDelta = null;
+  let previousMoistureDelta = null;
   let lastTemperatureResidual = { scaled: Infinity, absolute: Infinity };
   let lastMoistureResidual = { scaled: Infinity, absolute: Infinity };
   let lastTemperatureUpdate = Infinity;
@@ -204,8 +213,20 @@ function coupledStepQ4(grid, oldTemperature, oldMoisture, dt, environment, optio
     const faceD = nodeToFaceCoefficient(nodeD);
     const moistureSource = options.moistureSource ? options.moistureSource(grid, environment.time, R) : null;
     const rawMoisture = solveLinearStep(grid, oldMoisture, dt, 1, faceD, moistureSurfaceExchange, environment.moisture, interiorScale, moistureSource);
-    const nextTemperature = guessTemperature.map((value, i) => value + relaxation * (rawTemperature[i] - value));
-    const nextMoisture = guessMoisture.map((value, i) => value + relaxation * (rawMoisture[i] - value));
+    const temperatureDelta = rawTemperature.map((value, i) => value - guessTemperature[i]);
+    const moistureDelta = rawMoisture.map((value, i) => value - guessMoisture[i]);
+    const aitkenRelaxation = (delta, previousDelta) => {
+      if (!acceleratePicard || !previousDelta) return relaxation;
+      const deltaDifference = delta.map((value, i) => value - previousDelta[i]);
+      const denominator = dotProduct(deltaDifference, deltaDifference);
+      if (!(denominator > 1e-30)) return relaxation;
+      const candidate = -dotProduct(previousDelta, deltaDifference) / denominator;
+      return Number.isFinite(candidate) && candidate > relaxation ? Math.min(1, candidate) : relaxation;
+    };
+    const temperatureRelaxation = aitkenRelaxation(temperatureDelta, previousTemperatureDelta);
+    const moistureRelaxation = aitkenRelaxation(moistureDelta, previousMoistureDelta);
+    const nextTemperature = guessTemperature.map((value, i) => value + temperatureRelaxation * temperatureDelta[i]);
+    const nextMoisture = guessMoisture.map((value, i) => value + moistureRelaxation * moistureDelta[i]);
     if (nextMoisture.some((value) => !(value > 0) || !Number.isFinite(value)) || nextTemperature.some((value) => !Number.isFinite(value) || value + 273.15 <= 0)) {
       throw new Error(`Picard得到非法状态: T=${nextTemperature[0]}, C=${nextMoisture[0]}`);
     }
@@ -216,6 +237,8 @@ function coupledStepQ4(grid, oldTemperature, oldMoisture, dt, environment, optio
     lastMoistureUpdate = maxAbsDiff(nextMoisture, guessMoisture);
     lastTemperatureResidual = fieldResidual(grid, oldTemperature, nextTemperature, dt, finalCapacity, finalK, heatSurfaceExchange, environment.temperature, interiorScale, temperatureSource);
     lastMoistureResidual = fieldResidual(grid, oldMoisture, nextMoisture, dt, 1, finalD, moistureSurfaceExchange, environment.moisture, interiorScale, moistureSource);
+    previousTemperatureDelta = temperatureDelta;
+    previousMoistureDelta = moistureDelta;
     guessTemperature = nextTemperature;
     guessMoisture = nextMoisture;
     if (lastTemperatureUpdate <= temperatureUpdateTolerance && lastMoistureUpdate <= moistureUpdateTolerance && lastTemperatureResidual.scaled <= residualTolerance && lastMoistureResidual.scaled <= residualTolerance) {
@@ -533,6 +556,7 @@ function makeStepOptions(options, radius, time) {
     ...geometryOptions(options, radius),
     physics: options.physics ?? 'q4',
     relaxation: options.relaxation,
+    acceleratePicard: options.acceleratePicard,
     maxIterations: options.maxIterations,
     temperatureUpdateTolerance: options.temperatureUpdateTolerance,
     moistureUpdateTolerance: options.moistureUpdateTolerance,
@@ -603,7 +627,10 @@ function simulateQuestion4(environment, radiusModel, options = {}) {
     maxMoisture: Math.max(...moisture),
   };
   let t = 0;
-  let dt = requestedDt;
+  // 可选的初始步长预热：高网格数时先用小步长通过初始强瞬态，
+  // 每次接受后按现有策略放大，最终恢复到请求的 requestedDt。
+  let dt = options.initialDt ?? requestedDt;
+  let hadRejectedStep = false;
   let outputIndex = 0;
   let checkpointIndex = 0;
   let previousMaximum = Math.max(...moisture);
@@ -742,11 +769,15 @@ function simulateQuestion4(environment, radiusModel, options = {}) {
         recordProgress(t, radius, 'interval');
         while (nextProgressTime <= t + 1e-8) nextProgressTime += progressIntervalSeconds;
       }
-      dt = Math.min(requestedDt, dt * 2);
+      // 若刚经历过拒绝，避免直接翻倍回到刚才失败的步长；
+      // 在同一残差判据下渐进回升，减少高网格下的拒绝—重算振荡。
+      dt = Math.min(requestedDt, dt * (hadRejectedStep ? 1.25 : 2));
+      hadRejectedStep = false;
     } catch (error) {
       if (dt <= requestedDt / 128) throw error;
       dt *= 0.5;
       balance.rejectedSteps++;
+      hadRejectedStep = true;
     }
   }
   const lastState = { time: t, temperature: temperature.slice(), moisture: moisture.slice(), radius: radiusModel.radius(t) };
