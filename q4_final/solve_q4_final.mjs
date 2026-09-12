@@ -392,7 +392,7 @@ async function runSpace(config, inputs, geometry, runDir, nValues = config.main.
     console.log(`[q4-final] 开始 ${caseName}`);
     const caseDir = path.join(runDir, caseName);
     await fs.mkdir(caseDir, { recursive: true });
-    const result = simulateQuestion4(inputs.environment, geometry, { n, dt, tEnd: config.main.tEnd_s, outputInterval: config.main.outputInterval_s, kind: config.main.kind, physics: config.main.physics, mesh: config.main.mesh, progressPath: path.join(caseDir, 'progress.jsonl'), progressLabel: caseName, progressIntervalSeconds: 1800 });
+    const result = simulateQuestion4(inputs.environment, geometry, { n, dt, tEnd: config.main.tEnd_s, outputInterval: config.main.outputInterval_s, kind: config.main.kind, physics: config.main.physics, mesh: config.main.mesh, maxIterations: config.main.picardMaxIterations, progressPath: path.join(caseDir, 'progress.jsonl'), progressLabel: caseName, progressIntervalSeconds: 1800 });
     const summary = await writeCaseArtifacts(caseDir, config, inputs, geometry, result, caseName, 'reference_progress');
     summaries.push(summary);
     console.log(`[q4-final] 完成 ${caseName}: threshold=${summary.thresholdTime_h} h accepted=${summary.acceptedSteps} rejected=${summary.rejectedSteps}`);
@@ -446,7 +446,7 @@ async function main() {
     const pchipDt = options.dt ?? config.main.dt_s;
     const pchipDir = path.join(runDir, 'pchip', pchipName);
     await fs.mkdir(pchipDir, { recursive: true });
-    const result = simulateQuestion4(inputs.environment, inputs.pchip, { n: selectedN, dt: pchipDt, tEnd: config.main.tEnd_s, outputInterval: config.main.outputInterval_s, kind: config.main.kind, physics: config.main.physics, mesh: config.main.mesh, progressPath: path.join(pchipDir, 'progress.jsonl'), progressLabel: pchipName, progressIntervalSeconds: 1800 });
+    const result = simulateQuestion4(inputs.environment, inputs.pchip, { n: selectedN, dt: pchipDt, tEnd: config.main.tEnd_s, outputInterval: config.main.outputInterval_s, kind: config.main.kind, physics: config.main.physics, mesh: config.main.mesh, maxIterations: config.main.picardMaxIterations, progressPath: path.join(pchipDir, 'progress.jsonl'), progressLabel: pchipName, progressIntervalSeconds: 1800 });
     pchipSummary = await writeCaseArtifacts(pchipDir, config, inputs, inputs.pchip, result, pchipName, 'same_environment_direct_PCHIP');
   }
   if (spaceSummaries.length || timeSummaries.length || pchipSummary) {

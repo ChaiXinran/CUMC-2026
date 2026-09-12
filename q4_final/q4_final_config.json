@@ -27,7 +27,8 @@
     "outputInterval_s": 60,
     "mesh": "surfaceRefined",
     "physics": "q4",
-    "kind": "material"
+    "kind": "material",
+    "picardMaxIterations": 200
   },
   "timeCheck": {
     "enabled": true,
